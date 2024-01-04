@@ -1,1 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Appointment</title>
+</head>
+
+<body>
+    <h1>Book A Call</h1>
+
+    <form onsubmit="saveData(event)" class="form-group">
+        <label class="form-label">Name</label>
+        <input type="text" name="username" id="nameInputTag">
+
+        <label class="form-label">Email</label>
+        <input type="email" name="emailId" id="emailInputTag">
+
+        <label class="form-label">Phone Number</label>
+        <input type="text" name="phone" id="phoneInputTag">
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <h2>Detail</h2>
+    <ul id="ul1"></ul>
+
+    <script src="application_crud.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.3/axios.min.js"></script>
+</body>
+
+</html>
