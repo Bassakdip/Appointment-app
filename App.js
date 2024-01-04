@@ -20,6 +20,19 @@ async function saveData(event) {
     }
 }
 
+window .addEventListener("DOMContentLoaded",async ()=>{
+    try{
+        const res = await axios.get("https://crudcrud.com/api/109a064e403445edbbc1a3eec25932b0/appointmentData")
+        for(var i=0;i<res.data.length;i++)
+        {
+            showUserOnScreen(res.data[i]);
+        }
+    }
+    catch(err){
+        console.log(err);
+    }
+})
+
 function showUserOnScreen(obj) {
     if (!obj) {
         console.error('addToScreen called with undefined');
