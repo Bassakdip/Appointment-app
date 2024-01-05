@@ -12,7 +12,7 @@ async function saveData(event) {
     };
 
     try {
-        const res = await axios.post("https://crudcrud.com/api/782909609cf5459982c0a9d0b1cb72b8/data", obj);
+        const res = await axios.post("https://crudcrud.com/api/109a064e403445edbbc1a3eec25932b0/appointmentData", obj);
         console.log(res.data);
         showUserOnScreen(res.data);
     } catch (err) {
@@ -33,14 +33,23 @@ window .addEventListener("DOMContentLoaded",async ()=>{
     }
 })
 
+
 function showUserOnScreen(obj) {
-    if (!obj) {
-        console.error('addToScreen called with undefined');
-        return;
+    
+    const parentNode = document.getElementById('ul1');
+    const childHTML = `<li id=${obj._id} > ${obj.name} - ${obj.email} - ${obj.phn}
+                        <button onclick= deleteDataFromCrudCrud('${obj._id}')>Delete</button>
+                        <button onclick= editUser('${obj.name}','${obj.email}','${obj.phn}')>Edit</button> 
+                        </li>`
+    parentNode.innerHTML = parentNode.innerHTML+childHTML;
+}
+
+async function deleteDataFromCrudCrud(id) {
+    try{
+        const res = await axios.delete(`https://crudcrud.com/api/109a064e403445edbbc1a3eec25932b0/appointmentData/${id}`)
+        removeUserOnScreen(res.data);
     }
-    const parentElement = document.getElementById('ul1');
-    const li = document.createElement('li');
-    const liText = document.createTextNode(`Name: ${obj.name}, Email: ${obj.email}, Phn: ${obj.phn}`);
-    li.appendChild(liText);
-    parentElement.append(li);
+    catch(err){
+        console.log(err)
+    }
 }
